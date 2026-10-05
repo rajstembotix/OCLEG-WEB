@@ -1,0 +1,62 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js build outputs
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# local env files
+.env*.local
+
+# vercel
+.vercel
+
+# typescript build cache
+*.tsbuildinfo
+next-env.d.ts
+
+# project-specific build & temp artifacts
+brochure-pages/
+.tools/
+*.zip
+
+# unzipped static export artifacts in root
+/_next/
+/404/
+/404.html
+/about/
+/become-a-dealer/
+/careers/
+/clients/
+/contact/
+/products/
+/index.html
+/index.txt
+/images/
+/OCLEG BROCHURE.pdf
+/OCLEG-Brochure.pdf
+/Ocleg Logo.jpeg
+/ChatGPT Image Sep 30, 2026, 07_01_17 PM.png
+/Digi max pro.jpeg
+/publish-github.ps1
+/WhatsApp Image 2026-09-09 at 16.20.03.jpeg
+
+

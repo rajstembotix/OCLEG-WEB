@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 220" role="img" aria-label="OCLEG Electronics">
+  <title>OCLEG Electronics</title>
+  <text
+    x="320"
+    y="118"
+    text-anchor="middle"
+    fill="#C8102E"
+    font-family="Arial Narrow, Arial Black, Impact, sans-serif"
+    font-size="118"
+    font-weight="800"
+    font-style="italic"
+    letter-spacing="-2"
+  >OCLEG</text>
+  <text
+    x="448"
+    y="58"
+    fill="#C8102E"
+    font-family="Arial, sans-serif"
+    font-size="22"
+    font-weight="700"
+  >®</text>
+  <text
+    x="320"
+    y="178"
+    text-anchor="middle"
+    fill="#FFFFFF"
+    font-family="Arial Narrow, Arial, Helvetica, sans-serif"
+    font-size="42"
+    font-weight="700"
+    letter-spacing="10"
+  >ELECTRONICS</text>
+</svg>
