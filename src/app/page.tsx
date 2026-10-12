@@ -4,48 +4,17 @@ import Link from "next/link";
 import { ImageSlider } from "@/components/ImageSlider";
 import { categories, company, companyProfile } from "@/data/catalog";
 
-/** Hero: best brochure product shots only */
+/** Hero: 9 auto-running featured product images */
 const heroSlides = [
-  { src: "/images/products/eco-smart.jpg", alt: "OCLEG Eco Smart control panel" },
-  { src: "/images/products/mcb-smart-digital.jpg", alt: "OCLEG MCB Smart digital panel" },
-  { src: "/images/products/smart-pro.jpg", alt: "OCLEG Smart Pro panel" },
-  { src: "/images/products/phaser.jpg", alt: "OCLEG Phaser three phase panel" },
-  { src: "/images/products/digi-max-pro.jpg", alt: "OCLEG DIGI-MAX PRO digital panel" },
-  { src: "/images/products/digi-mcb.jpg", alt: "OCLEG Digi MCB panel" },
-];
-
-/** Real OCLEG products used in daily applications — not fictional lifestyle stock */
-const dailyProducts = [
-  {
-    src: "/images/products/eco-smart.jpg",
-    title: "Pump & motor control",
-    copy: "Single-phase panels for home, farm and commercial pump sets.",
-  },
-  {
-    src: "/images/products/ew-alpha-llc.jpg",
-    title: "Water level control",
-    copy: "Automatic tank filling for societies, hotels and residences.",
-  },
-  {
-    src: "/images/products/phaser.jpg",
-    title: "Three-phase control",
-    copy: "Electronic panels for industrial and commercial motors.",
-  },
-  {
-    src: "/images/products/rakshak.jpg",
-    title: "Earth leakage safety",
-    copy: "ELCB / RCCB protection for homes and commercial buildings.",
-  },
-  {
-    src: "/images/products/smart-pro.jpg",
-    title: "DOL control panels",
-    copy: "Digital monitoring and protection for three-phase pump sets.",
-  },
-  {
-    src: "/images/products/astroleg.jpg",
-    title: "Street & outdoor lighting",
-    copy: "Astronomical / timer control for lighting applications.",
-  },
+  { src: "/images/products/llc-2.jpg", alt: "OCLEG Water Level Controller LLC-2" },
+  { src: "/images/products/rakshak.jpg", alt: "OCLEG Rakshak ELCB Earth Leakage Circuit Breaker" },
+  { src: "/images/products/ots.jpg", alt: "OCLEG OTS Digital Time Switch" },
+  { src: "/images/products/phaser.jpg", alt: "OCLEG Phaser Three Phase Panel" },
+  { src: "/images/products/ew-alpha.jpg", alt: "OCLEG EW-Alpha Automatic Starter" },
+  { src: "/images/products/main-line-stabilizer.jpg", alt: "OCLEG Main Line Voltage Stabilizer" },
+  { src: "/images/products/odp-306.jpg", alt: "OCLEG ODP-306 Control Panel" },
+  { src: "/images/products/auto-digital.jpg", alt: "OCLEG Auto Switch" },
+  { src: "/images/products/mcb-smart-analog.jpg", alt: "OCLEG MCB Smart Analog Panel" },
 ];
 
 const sectors = [
@@ -180,54 +149,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Day to day — real OCLEG product photos only */}
-      <section className="bg-brand-soft py-16 lg:py-20">
-        <div className="mx-auto max-w-7xl px-4 lg:px-6">
-          <div className="section-rule mb-4">
-            <h2 className="font-display text-3xl font-semibold tracking-wide md:text-4xl">
-              OCLEG In Day To Day Life
-            </h2>
-          </div>
-          <p className="mb-10 max-w-2xl text-brand-muted md:text-lg">
-            Real OCLEG products at work — pumps, water systems, appliance
-            protection, lighting and motor control.
-          </p>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {dailyProducts.map((item) => (
-              <div
-                key={item.title}
-                className="border border-brand-line bg-white p-5"
-              >
-                <div className="flex h-48 items-center justify-center bg-white">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={item.src}
-                    alt={item.title}
-                    className="max-h-full max-w-full object-contain"
-                  />
-                </div>
-                <h3 className="mt-4 font-display text-xl tracking-wide text-brand-dark">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-brand-muted">
-                  {item.copy}
-                </p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-8">
-            <Link
-              href="/products/"
-              className="text-sm font-semibold uppercase tracking-[0.1em] text-brand-red hover:underline"
-            >
-              Explore full product range →
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Product range */}
-      <section className="bg-white py-16 lg:py-20">
+      <section className="border-t border-brand-line bg-brand-soft py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-4 lg:px-6">
           <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
             <div>

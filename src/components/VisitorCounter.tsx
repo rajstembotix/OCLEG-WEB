@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 interface VisitorStats {
   usersToday: number;
@@ -13,18 +13,18 @@ interface VisitorStats {
   activeNow: number;
 }
 
-const STORAGE_KEY = "ocleg_visitor_counter_v2";
+const STORAGE_KEY = "ocleg_visitor_counter_v3";
 
-// Authentic baseline starting numbers matching the reference counter
+// Reset to start from the very beginning (launch baseline)
 const BASE_STATS: VisitorStats = {
-  usersToday: 24,
-  usersYesterday: 59,
-  thisMonth: 737,
-  thisYear: 18536,
-  totalUsers: 62922,
-  viewsToday: 68,
-  totalViews: 194050,
-  activeNow: 4,
+  usersToday: 1,
+  usersYesterday: 0,
+  thisMonth: 1,
+  thisYear: 1,
+  totalUsers: 1,
+  viewsToday: 1,
+  totalViews: 1,
+  activeNow: 2,
 };
 
 export function VisitorCounter() {
@@ -33,48 +33,76 @@ export function VisitorCounter() {
   const [highlightKey, setHighlightKey] = useState<string | null>(null);
   const [animatingDigits, setAnimatingDigits] = useState<boolean>(true);
 
-  // Initialize and persist stats across sessions
+  // Initialize and persist stats starting from the beginning
   useEffect(() => {
     setMounted(true);
 
     try {
+      // Clean up any old cached higher numbers from previous versions
+      localStorage.removeItem("ocleg_visitor_counter_v1");
+      localStorage.removeItem("ocleg_visitor_counter_v2");
+      localStorage.removeItem("ocleg_visitor_stats_v1");
+
       const todayStr = new Date().toISOString().slice(0, 10);
+      const sessionKey = "ocleg_session_" + todayStr;
+      const isNewSession = !sessionStorage.getItem(sessionKey);
+      if (isNewSession) {
+        sessionStorage.setItem(sessionKey, "1");
+      }
+
       const stored = localStorage.getItem(STORAGE_KEY);
       let current: VisitorStats;
 
       if (stored) {
         const parsed = JSON.parse(stored);
         if (parsed.lastDate === todayStr) {
-          // Same day: increment views
+          // Same day: increment views, and increment users if new session
           current = {
             ...BASE_STATS,
             ...parsed.stats,
-            viewsToday: (parsed.stats.viewsToday || BASE_STATS.viewsToday) + 1,
-            totalViews: (parsed.stats.totalViews || BASE_STATS.totalViews) + 1,
-            activeNow: Math.floor(Math.random() * 4) + 3, // 3 to 6
+            viewsToday: (parsed.stats.viewsToday || 1) + 1,
+            totalViews: (parsed.stats.totalViews || 1) + 1,
+            usersToday: isNewSession
+              ? (parsed.stats.usersToday || 1) + 1
+              : parsed.stats.usersToday || 1,
+            totalUsers: isNewSession
+              ? (parsed.stats.totalUsers || 1) + 1
+              : parsed.stats.totalUsers || 1,
+            thisMonth: isNewSession
+              ? (parsed.stats.thisMonth || 1) + 1
+              : parsed.stats.thisMonth || 1,
+            thisYear: isNewSession
+              ? (parsed.stats.thisYear || 1) + 1
+              : parsed.stats.thisYear || 1,
+            activeNow: Math.floor(Math.random() * 2) + 2, // 2 to 3
           };
         } else {
-          // New day: roll yesterday's count
+          // New day rollover
           current = {
             ...BASE_STATS,
             ...parsed.stats,
-            usersYesterday: parsed.stats.usersToday || BASE_STATS.usersYesterday,
+            usersYesterday: parsed.stats.usersToday || 1,
             usersToday: 1,
             viewsToday: 1,
-            totalUsers: (parsed.stats.totalUsers || BASE_STATS.totalUsers) + 1,
-            totalViews: (parsed.stats.totalViews || BASE_STATS.totalViews) + 1,
-            activeNow: Math.floor(Math.random() * 4) + 3,
+            totalUsers: (parsed.stats.totalUsers || 1) + 1,
+            totalViews: (parsed.stats.totalViews || 1) + 1,
+            thisMonth: (parsed.stats.thisMonth || 1) + 1,
+            thisYear: (parsed.stats.thisYear || 1) + 1,
+            activeNow: 2,
           };
         }
       } else {
-        // First visit on this browser
+        // Initial clean state starting from 1
         current = {
           ...BASE_STATS,
-          usersToday: BASE_STATS.usersToday + 1,
-          totalUsers: BASE_STATS.totalUsers + 1,
-          viewsToday: BASE_STATS.viewsToday + 1,
-          totalViews: BASE_STATS.totalViews + 1,
-          activeNow: 4,
+          usersToday: 1,
+          usersYesterday: 0,
+          thisMonth: 1,
+          thisYear: 1,
+          totalUsers: 1,
+          viewsToday: 1,
+          totalViews: 1,
+          activeNow: 2,
         };
       }
 
@@ -84,11 +112,9 @@ export function VisitorCounter() {
         JSON.stringify({ lastDate: todayStr, stats: current })
       );
     } catch {
-      // In case localStorage is blocked/restricted
       setStats(BASE_STATS);
     }
 
-    // Finish initial counter roll-in animation
     const animTimer = setTimeout(() => {
       setAnimatingDigits(false);
     }, 1200);
@@ -96,15 +122,14 @@ export function VisitorCounter() {
     return () => clearTimeout(animTimer);
   }, []);
 
-  // Live real-time traffic pulse simulation
+  // Live real-time counter ticking simulation
   useEffect(() => {
     if (!mounted) return;
 
-    // Periodically increment views or users to provide realistic live counting
+    // Tick every 11 seconds to show real-time live activity
     const interval = setInterval(() => {
       setStats((prev) => {
-        // Randomly choose between updating views or user count
-        const updateType = Math.random() > 0.65 ? "user" : "view";
+        const updateType = Math.random() > 0.6 ? "user" : "view";
         let next: VisitorStats;
 
         if (updateType === "user") {
@@ -116,7 +141,7 @@ export function VisitorCounter() {
             thisYear: prev.thisYear + 1,
             viewsToday: prev.viewsToday + 1,
             totalViews: prev.totalViews + 1,
-            activeNow: Math.max(2, Math.min(8, prev.activeNow + (Math.random() > 0.5 ? 1 : -1))),
+            activeNow: Math.max(1, Math.min(5, prev.activeNow + (Math.random() > 0.5 ? 1 : -1))),
           };
           setHighlightKey("totalUsers");
         } else {
@@ -124,7 +149,7 @@ export function VisitorCounter() {
             ...prev,
             viewsToday: prev.viewsToday + 1,
             totalViews: prev.totalViews + 1,
-            activeNow: Math.max(2, Math.min(8, prev.activeNow + (Math.random() > 0.4 ? 1 : -1))),
+            activeNow: Math.max(1, Math.min(5, prev.activeNow + (Math.random() > 0.4 ? 1 : -1))),
           };
           setHighlightKey("viewsToday");
         }
@@ -136,22 +161,21 @@ export function VisitorCounter() {
             JSON.stringify({ lastDate: todayStr, stats: next })
           );
         } catch {
-          // Ignore storage errors
+          // Ignore storage quota errors
         }
 
         return next;
       });
 
-      // Clear highlight after brief flash
       setTimeout(() => {
         setHighlightKey(null);
       }, 1500);
-    }, 9000); // Ticks every 9 seconds
+    }, 11000);
 
     return () => clearInterval(interval);
   }, [mounted]);
 
-  // Pad total users into 6 odometer digits
+  // Format into 6 odometer digits starting from 000001
   const digitString = String(stats.totalUsers).padStart(6, "0");
   const digits = digitString.split("");
 
@@ -195,7 +219,7 @@ export function VisitorCounter() {
               {/* Horizontal physical split seam across the center */}
               <div className="pointer-events-none absolute inset-x-0 top-1/2 h-[1px] bg-black/80 shadow-[0_1px_0_rgba(255,255,255,0.08)]" />
 
-              {/* Digit with roll animation */}
+              {/* Digit display */}
               <span
                 className={`font-display text-2xl font-bold tracking-tight text-white transition-transform duration-500 sm:text-[26px] ${
                   animatingDigits ? "scale-105" : "scale-100"
