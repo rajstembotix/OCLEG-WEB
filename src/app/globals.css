@@ -94,3 +94,16 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Suppress Netlify floating badges and drawer overlays */
+#netlify-badge,
+.netlify-badge,
+[data-netlify-badge],
+netlify-drawer,
+#netlify-drawer,
+[data-netlify-deploy-preview] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+}
