@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { categories, company } from "@/data/catalog";
+import { VisitorCounter } from "@/components/VisitorCounter";
 
 export function Footer() {
   return (
     <footer className="mt-0 bg-brand-dark text-white">
-      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-14 md:grid-cols-3 lg:px-6">
-        <div>
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:grid-cols-2 lg:grid-cols-12 lg:px-6">
+        <div className="lg:col-span-3">
           {/* Real uploaded logo — large on white so exact fonts/colors stay visible */}
           <div className="mb-5 inline-block bg-white px-5 py-4">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -23,7 +24,7 @@ export function Footer() {
           </p>
         </div>
 
-        <div>
+        <div className="lg:col-span-3">
           <h3 className="mb-4 font-display text-lg tracking-wide">Product Range</h3>
           <ul className="space-y-2 text-sm text-neutral-400">
             {categories.slice(0, 8).map((c) => (
@@ -47,7 +48,7 @@ export function Footer() {
           </ul>
         </div>
 
-        <div>
+        <div className="lg:col-span-3">
           <h3 className="mb-4 font-display text-lg tracking-wide">Contact</h3>
           <p className="text-sm leading-relaxed text-neutral-400">
             {company.address}
@@ -89,6 +90,11 @@ export function Footer() {
               Enquire
             </Link>
           </div>
+        </div>
+
+        {/* Live Visitor Counter */}
+        <div className="lg:col-span-3">
+          <VisitorCounter />
         </div>
       </div>
       <div className="bg-brand-red py-3 text-center text-sm text-white">
