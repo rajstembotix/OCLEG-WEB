@@ -37,6 +37,8 @@ next-env.d.ts
 brochure-pages/
 .tools/
 *.zip
+*.backup.jpg
+*.old.jpg
 
 # unzipped static export artifacts in root
 /_next/
