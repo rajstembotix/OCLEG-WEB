@@ -4,8 +4,13 @@ import Link from "next/link";
 import { ImageSlider } from "@/components/ImageSlider";
 import { categories, company, companyProfile } from "@/data/catalog";
 
-/** Hero: 9 auto-running featured product images */
+/** Hero: auto-running featured product images including newly uploaded products */
 const heroSlides = [
+  { src: "/images/products/i-pro-v2.jpg", alt: "OCLEG i-PRO Single Phase Control Panel" },
+  { src: "/images/products/i-smart-digital-v2.jpg", alt: "OCLEG i-SMART Single Phase Control Panel" },
+  { src: "/images/products/digi-re-v2.jpg", alt: "OCLEG DIGI-RE Digital Motor Starter" },
+  { src: "/images/products/digi-mcb-v2.jpg", alt: "OCLEG DIGI-MCB Motor Starter with MCB" },
+  { src: "/images/products/digi-re-llc-v2.jpg", alt: "OCLEG DIGI-RE LLC Water Level Controller Starter" },
   { src: "/images/products/llc-2.jpg", alt: "OCLEG Water Level Controller LLC-2" },
   { src: "/images/products/rakshak.jpg", alt: "OCLEG Rakshak ELCB Earth Leakage Circuit Breaker" },
   { src: "/images/products/ots.jpg", alt: "OCLEG OTS Digital Time Switch" },

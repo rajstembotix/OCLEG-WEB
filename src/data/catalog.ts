@@ -166,7 +166,7 @@ export const categories: Category[] = [
         code: "1.3",
         name: "i SMART (RELAY WITH CONTACTOR TYPE)",
         images: [
-          "/images/products/i-smart-digital.jpg",
+          "/images/products/i-smart-digital-v2.jpg",
           "/images/products/i-smart-analog.jpg",
         ],
         specifications: [
@@ -224,7 +224,7 @@ export const categories: Category[] = [
         id: "i-pro",
         code: "1.5",
         name: "i-PRO (DRY RUN TYPE)",
-        images: ["/images/products/i-pro.jpg"],
+        images: ["/images/products/i-pro-v2.jpg"],
         specifications: [
           "Digital Volt-Amp. Meter",
           "Electronic Over Load & Dry Run Protection",
@@ -380,7 +380,7 @@ export const categories: Category[] = [
         id: "digi-mcb",
         code: "2.2",
         name: "DIGI-MCB (DIGITAL METER)",
-        images: ["/images/products/digi-mcb.jpg"],
+        images: ["/images/products/digi-mcb-v2.jpg"],
         specifications: [
           "Digital Volt - Amp Meter",
           "Over Load Protection by MCB",
@@ -403,7 +403,7 @@ export const categories: Category[] = [
         id: "digi-re",
         code: "2.3",
         name: "DIGI-RE (ELECTRONIC TYPE)",
-        images: ["/images/products/digi-re.jpg"],
+        images: ["/images/products/digi-re-v2.jpg"],
         specifications: [
           "Digital Display for Volt & Amp. Meter",
           "Only Run Capacitor",
@@ -429,7 +429,7 @@ export const categories: Category[] = [
         code: "2.4",
         name: "DIGI-RE LLC (WITH WATER LEVEL CONTROLLER)",
         images: [
-          "/images/products/digi-re-llc.jpg",
+          "/images/products/digi-re-llc-v2.jpg",
           "/images/products/digi-re-sensors.jpg",
         ],
         specifications: [
