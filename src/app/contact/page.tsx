@@ -11,12 +11,15 @@ export default function ContactPage() {
       />
       <div className="mx-auto grid max-w-6xl gap-12 px-4 py-14 lg:grid-cols-2 lg:px-6">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-red">
-            MFG BY
-          </p>
-          <h2 className="mt-2 font-display text-3xl italic text-brand-red md:text-4xl">
-            {company.legal}
-          </h2>
+          {/* MFG BY : OCLEG® CONTROLS from official registered branding artwork */}
+          <div className="mb-4">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/brand/mfg-by-ocleg-controls.png"
+              alt="MFG BY : OCLEG® CONTROLS"
+              className="h-10 w-auto object-contain sm:h-12 md:h-14"
+            />
+          </div>
           <p className="mt-6 leading-relaxed text-brand-dark">{company.address}</p>
 
           <div className="mt-4 space-y-2">
@@ -25,6 +28,23 @@ export default function ContactPage() {
               className="block font-medium text-brand-red hover:underline"
             >
               📞 {company.phone}
+            </a>
+            {company.emails.map((email) => (
+              <a
+                key={email}
+                href={`mailto:${email}`}
+                className="block font-medium text-brand-red hover:underline"
+              >
+                ✉️ {email}
+              </a>
+            ))}
+            <a
+              href="https://www.oclegelectronics.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block font-medium text-brand-red hover:underline"
+            >
+              🌐 www.oclegelectronics.com
             </a>
             <a
               href={company.whatsappUrl}
@@ -40,15 +60,6 @@ export default function ContactPage() {
               </span>
               <span>WhatsApp: {company.phone}</span>
             </a>
-            {company.emails.map((email) => (
-              <a
-                key={email}
-                href={`mailto:${email}`}
-                className="block font-medium text-brand-red hover:underline"
-              >
-                ✉️ {email}
-              </a>
-            ))}
           </div>
 
           {/* Dedicated WhatsApp Chat Box */}
@@ -85,7 +96,6 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <p className="mt-6 text-sm text-brand-muted">{company.site}</p>
           <a
             href="/OCLEG-Brochure.pdf"
             className="mt-6 inline-block bg-brand-red px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.1em] text-white hover:bg-[#a50d25]"

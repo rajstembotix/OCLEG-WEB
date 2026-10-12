@@ -6,7 +6,7 @@ import { categories, company, companyProfile } from "@/data/catalog";
 
 /** Hero: auto-running featured product images including newly uploaded products */
 const heroSlides = [
-  { src: "/images/products/i-pro-v2.jpg", alt: "OCLEG i-PRO Single Phase Control Panel" },
+  { src: "/images/products/i-pro-v3.jpg", alt: "OCLEG i-PRO Single Phase Control Panel" },
   { src: "/images/products/i-smart-digital-v2.jpg", alt: "OCLEG i-SMART Single Phase Control Panel" },
   { src: "/images/products/digi-re-v2.jpg", alt: "OCLEG DIGI-RE Digital Motor Starter" },
   { src: "/images/products/digi-mcb-v2.jpg", alt: "OCLEG DIGI-MCB Motor Starter with MCB" },

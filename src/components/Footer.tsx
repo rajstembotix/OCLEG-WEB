@@ -54,12 +54,29 @@ export function Footer() {
             {company.address}
           </p>
 
-          <div className="mt-3 space-y-1 text-sm">
+          <div className="mt-3 space-y-1.5 text-sm">
             <a
               href={`tel:${company.phone.replace(/[^+\d]/g, "")}`}
               className="block font-medium text-brand-red transition hover:text-white"
             >
               📞 {company.phone}
+            </a>
+            {company.emails.map((email) => (
+              <a
+                key={email}
+                href={`mailto:${email}`}
+                className="block text-brand-red transition hover:text-white"
+              >
+                ✉️ {email}
+              </a>
+            ))}
+            <a
+              href="https://www.oclegelectronics.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block font-medium text-brand-red transition hover:text-white"
+            >
+              🌐 www.oclegelectronics.com
             </a>
             <a
               href={company.whatsappUrl}
@@ -69,15 +86,6 @@ export function Footer() {
             >
               <span>💬 WhatsApp: {company.phone}</span>
             </a>
-            {company.emails.map((email) => (
-              <a
-                key={email}
-                href={`mailto:${email}`}
-                className="block text-brand-red transition hover:text-white"
-              >
-                {email}
-              </a>
-            ))}
           </div>
           <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-neutral-400">
             <Link href="/careers/" className="hover:text-white">

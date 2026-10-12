@@ -199,7 +199,7 @@ export const categories: Category[] = [
         code: "1.4",
         name: "i-SMART (MCB WITH CONTACTOR TYPE)",
         images: [
-          "/images/products/i-smart-mcb-digital.jpg",
+          "/images/products/i-smart-digital-v2.jpg",
           "/images/products/i-smart-mcb-analog.jpg",
         ],
         specifications: [
@@ -224,7 +224,7 @@ export const categories: Category[] = [
         id: "i-pro",
         code: "1.5",
         name: "i-PRO (DRY RUN TYPE)",
-        images: ["/images/products/i-pro-v2.jpg"],
+        images: ["/images/products/i-pro-v3.jpg"],
         specifications: [
           "Digital Volt-Amp. Meter",
           "Electronic Over Load & Dry Run Protection",
