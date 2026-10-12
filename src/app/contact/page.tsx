@@ -15,7 +15,7 @@ export default function ContactPage() {
           <div className="mb-4">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/brand/mfg-by-ocleg-controls.png"
+              src="/images/brand/mfg-by-ocleg-controls.png?v=2"
               alt="MFG BY : OCLEG® CONTROLS"
               className="h-10 w-auto object-contain sm:h-12 md:h-14"
             />
